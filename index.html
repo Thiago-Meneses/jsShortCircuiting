@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <title>Short Circuting</title>
+
+        <!-- Personal CSS -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="https://thiago-meneses.github.io/spacing.css">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="bd-container">
+            <main class="main-container">
+                <header class="content-header mb-5">
+                    <h1 class="headline title-frame my-3">Short Circuiting</h1>
+                    <p class="px-2 mt-4">Short Circuiting is a behaviour that is <b>built into JavaScript</b> whenever you're evaluating anything</p>
+                    <p class="px-2 mt-2">Short circuiting allows things to become simpler.</p>
+                    <p class="px-2 mt-5">Short circuiting allows us to use <span class="blue-backdrop">Logical Operators</span>, which can be either <code class="inlineCode">&&</code> or <code class="inlineCode">||</code></p>
+                    <p class="px-2 mt-2">We use these operators in the same way if we were to compare values in <b>conditional statements</b>, like <code class="inlineCode">if</code> statements.</p>
+                    <p class="px-2 mt-5">It's also important to use <code class="inlineCode">;</code> at the end of our code lines.</p>
+                    <p class="px-2 mt-2">This prevents ASI (Automatic Semicolon Insertion), which can cause erros in our code.</p>
+                    <p class="px-2 mt-5">Short circuing can be done surrounded by parenthesis <code class="inlineCode">( )</code> or curly braces <code class="inlineCode">{ }</code></p>
+                </header>
+                <div class="content">
+                    <div class="frame-line">
+                        <h1 class='headline' id="filter"><span class="backdrop">Examples</span></h1>
+                        <p class="pl-2 mt-3">What follows is a list of examples showing the behaviours and differences of the operatosrs.</p>
+                        <div class="example-grid example-container-chapter mt-5">
+                            <p class="mt-3"><b>1º Example:</b></p>
+                            <pre class="snippet">
+                                <code>
+<span class="weak">let a = true;
+let b = false;
+    
+//Short Circuiting with Parentheses</span>
+( a && b );
+( a || b );
+
+<span class="weak">//Short Circuiting with Curly Braces</span>
+{ a && b };
+{ a || b };
+                                </code>
+                            </pre>
+                            <p class="mt-3">Console:</p>
+                            <pre class="console">
+                                <code>
+false
+true
+
+false
+true
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="example-grid example-container-chapter mt-5">
+                            <p class="mt-5"><b>2º Example:</b></p>
+                            <p>Using Short Circuiting inside an <code class="inlineCode">if</code> statement</p>
+                            <pre class="snippet">
+                                <code>
+var a = true
+var b = false
+
+if ( a && b ) {
+    console.log("yes");
+} else {
+    console.log("no");
+}
+                                </code>
+                            </pre>
+                            <p class="mt-3">Console:</p>
+                            <pre class="console">
+                                <code>
+no
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="example-grid example-container-chapter mt-5">
+                            <p class="mt-5"><b>3º Example:</b></p>
+                            <p>Using Objects and Variables</p>
+                            <pre class="snippet">
+                                <code>
+let myFavoriteNumber = 88
+let personObj = { 
+    name: "John",
+    age: 42
+}
+
+if ( personObj.name==="John" && myFavoriteNumber===25 ) {
+    console.log("Yes")
+} else {
+    console.log("No")
+}
+                                </code>
+                            </pre>
+                            <p class="mt-3">Console:</p>
+                            <pre class="console">
+                                <code>
+No
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="example-grid example-container-chapter mt-5">
+                            <p class="mt-5"><b>4º Example:</b></p>
+                            <p>Using a Ternary Operator</p>
+                            <pre class="snippet">
+                                <code>
+let myFavoriteNumber = 88
+let personObj = { 
+    name: "John",
+    age: 42
+}
+
+( personObj.name==="John" && myFavoriteNumber===25 ) ? console.log("Yes") : console.log("No")
+                                </code>
+                            </pre>
+                            <p class="mt-3">Console:</p>
+                            <pre class="console">
+                                <code>
+No
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="example-grid example-container-chapter mt-5">
+                            <p class="mt-5"><b>5º Example:</b></p>
+                            <pre class="snippet">
+                                <code>
+console.log( null == undefined )
+console.log( null === undefined )
+                                </code>
+                            </pre>
+                            <p class="mt-3">Console:</p>
+                            <pre class="console">
+                                <code>
+true
+false
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="frame-line">
+                        <h1 class='headline' id="falsieValues"><span class="backdrop">Falsie Values</span></h1>
+                        <p class="pl-2 mt-3">Falsey values are applicable with Short Circuiting</p>
+                        <p class="pl-2 mt-3">All falsey values are applicable</p>
+                        <details class="example-container-chapter my-3">
+                            <summary class="py-3"><b>Example:</b></summary>
+                            <div class="example-grid">
+                                <div class="item1">
+                                    <pre class="snippet">
+                                        <code>
+let myNum = 0
+let myName = "Michael"
+
+(myName==="Michael" && myNum) ? console.log("yes") : console.log("No")
+                                        </code>
+                                    </pre>
+                                </div>
+                                <div class="item2">
+                                    <p class="mt-3">Console:</p>
+                                </div>
+                                <div class="item3">
+                                    <pre class="console">
+                                        <code>
+No
+                                        </code>
+                                    </pre>
+                                </div>
+                                <div class="item4">
+                                    <p class="mt-2"><code class="inlineCode">myNum</code> is a falsey value, and is considered as false</p>
+                                </div>
+                            </div>
+                        </details>
+                        <div class="chapter">
+                            <h2 class="chapter-title px-2"><span class="backdrop">Functions without a <code class="inlineCode">return</code> statement</span></h2>
+                            <p class="px-2 mt-4">When using functions we have to keep in mind that they will <b>always return</b> something, even if we don't manually define a <code class="inlineCode">return</code> value</p>
+                            <p class="px-2 mt-4"><b>A function that has not return statement will return <code class="inlineCode">undefined</code> by default</b>.</p>
+                            <p class="px-2 mt-4">Remember that <code class="inlineCode">undefined</code> is a falsie value.</p>
+                            <p class="px-2 mt-1">Because of this, when we call functions in Short Circuiting, this falsie value will be considered.</p>
+                            <details class="example-container-chapter my-3">
+                                <summary class="py-3"><b>Example:</b></summary>
+                                <div class="example-grid">
+                                    <div class="item1">
+                                        <pre class="snippet">
+                                            <code>
+function myFunc() {
+    let name = "John"
+}
+let age = 32
+
+( age && myFunc() ) ? console.log("Yes") : console.log("No")
+                                            </code>
+                                        </pre>
+                                    </div>
+                                    <div class="item2">
+                                        <p class="mt-3">Console:</p>
+                                    </div>
+                                    <div class="item3">
+                                        <pre class="console">
+                                            <code>
+No
+                                            </code>
+                                        </pre>
+                                    </div>
+                                    <div class="item4">
+                                        <p class="mt-2">"No" will be logged into the console</p>
+                                        <p class="mt-2">This is because we didn't define a return value for myFunc, and when we call it, <code class="inlineCode">undefined</code> is returned as default.</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="chapter">
+                            <h2 class="chapter-title px-2 mt-5"><span class="backdrop">Calling vs Using a Function</span></h2>
+                            <p class="px-2 mt-4">Another important thing to understand is that there is a difference between calling a function and using a function.</p>
+                            <p class="px-2 mt-4">To call a function we write parenthesis in front of it, or else it will not be called.</p>
+                            <p class="px-2 mt-4">Let's use the previous example again, this time without calling the function to see the difference.</p>
+                            <details class="example-container-chapter my-3">
+                                <summary class="py-3"><b>Example:</b></summary>
+                                <div class="example-grid">
+                                    <div class="item1">
+                                        <pre class="snippet">
+                                            <code>
+function myFunc() {
+    let name = "John"
+}
+let age = 32
+
+(age && myFunc)? console.log("Yes") : console.log("No")
+                                            </code>
+                                        </pre>
+                                    </div>
+                                    <div class="item2">
+                                        <p class="mt-3">Console:</p>
+                                    </div>
+                                    <div class="item3">
+                                        <pre class="console">
+                                            <code>
+Yes
+                                            </code>
+                                        </pre>
+                                    </div>
+                                    <div class="item4">
+                                        <p class="mt-2">This time "Yes" was logged into the console, and this is because inside of our Short Circuit, we only checked if both "age" and "myFunc" were true, and as both of them are not falsey values, we got "Yes" as a return</p>
+                                        <p class="mt-2">Even if myFunc returned undefined as default, we didn't actually call it, we just want to know if it existed, and yes, it does exist</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
